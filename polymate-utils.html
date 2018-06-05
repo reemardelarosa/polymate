@@ -1,0 +1,25 @@
+<link rel="import" href="../polymer/polymer.html">
+
+<script>
+  (() => {
+
+    PolymateUtils = function(superClass) {
+      return class extends superClass {
+
+        /**
+         * @desc check if object is empty
+         * @param {Object} object
+         * @return {Boolean} empty
+         */
+        isEmpty(obj) {
+          for (var prop in obj) {
+            if (obj.hasOwnProperty(prop)) return false;
+          }
+
+          return true;
+        }
+      }
+    }
+
+  })();
+</script>

@@ -19,12 +19,28 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic polymate-view demo</h3>
+      <h3>Basic Loader</h3>
       <demo-snippet>
         <template>
-          <polymate-view></polymate-view>
+          <polymate-view id="basicLoader" class="small"></polymate-view>
+          <custom-style>
+              <style>
+                .small {
+                  font-size: 100px;
+                }
+              </style>
+            </custom-style>
         </template>
       </demo-snippet>
     </div>
+    <script>
+      window.addEventListener('WebComponentsReady', function(e) {
+        // Basic Loader
+        let basicLoader = document.getElementById('basicLoader');
+        basicLoader.options = {
+          path: 'basicLoader.json'
+        };
+      });
+    </script>
   </body>
 </html>

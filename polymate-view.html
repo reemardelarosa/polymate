@@ -6,10 +6,10 @@
     <style>
       :host {
         display: inline-block;
-        overflow: hidden;
+        width: 1em;
+        height: 1em;
+        min-height: auto;
         margin: 0 auto;
-        width: var(--polymate-view-width, 100%);
-        height: var(--polymate-view-height, 100%);
       }
     </style>
     <div id="polymate"></div>
@@ -29,7 +29,7 @@
       static get properties() {
         return {
           /**
-           * @desc `analyticsId` from the consumer
+           * @desc animation's options
            * @type {Object}
            */
           options: {
@@ -51,6 +51,21 @@
             type: String
           }
         };
+      }
+      static get observers() {
+        return [
+          '_reloadAnimation(options.*)'
+        ]
+      }
+
+
+      /**
+       * @desc reinitialize if options are updated
+       * @param {Object} object
+       * @return {Void}
+       */
+      _reloadAnimation(options) {
+        this.initializeLottie();
       }
     }
 

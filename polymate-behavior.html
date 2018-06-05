@@ -1,21 +1,24 @@
 <link rel="import" href="../polymer/polymer.html">
-<link rel="import" href="../bodymovin/build//player/lottie.js">
+<link rel="import" href="polymate-utils.html">
+<script src="../bodymovin/build/player/lottie.js"></script>
 
 <script>
   (() => {
 
     PolymateBehavior = function(superClass) {
-      return class extends superClass {
+      return class extends PolymateUtils(superClass) {
         ready() {
           super.ready();
-          this._initializeLottie();
+          this.initializeLottie();
         }
         
         /**
          * @desc load the lottie animation using bodymovin player
          * @return {Void}
          */
-        _initializeLottie() {
+        initializeLottie() {
+          if (this.isEmpty(this.options)) return;
+
           let _options = {
             container: this.$.polymate,
             renderer: this.options.renderer || 'svg',
@@ -26,11 +29,6 @@
             path: this.options.path || '',
             rendererSettings: this.options.rendererSettings || {}
           };
-
-          this.updateStyles({
-            '--polymate-view-width': this.width + 'px',
-            '--polymate-view-height': this.height + 'px'
-          });
 
           this.anim = lottie.loadAnimation(_options);
         }
