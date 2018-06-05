@@ -1,0 +1,89 @@
+<link rel="import" href="../polymer/polymer.html">
+<link rel="import" href="../bodymovin/build//player/lottie.js">
+
+<script>
+  (() => {
+
+    PolymateBehavior = function(superClass) {
+      return class extends superClass {
+        ready() {
+          super.ready();
+          this._initializeLottie();
+        }
+        
+        /**
+         * @desc load the lottie animation using bodymovin player
+         * @return {Void}
+         */
+        _initializeLottie() {
+          let _options = {
+            container: this.$.polymate,
+            renderer: this.options.renderer || 'svg',
+            loop: this.options.loop !== false,
+            autoplay: this.options.autoplay !== false,
+            autoloadSegments: this.options.autoloadSegments !== false,
+            animationData: this.options.animationData,
+            path: this.options.path || '',
+            rendererSettings: this.options.rendererSettings || {}
+          };
+
+          this.updateStyles({
+            '--polymate-view-width': this.width + 'px',
+            '--polymate-view-height': this.height + 'px'
+          });
+
+          this.anim = lottie.loadAnimation(_options);
+        }
+
+        /**
+         * @desc start the animation
+         * @return {Void}
+         */
+        play() {
+          this.anim.play();
+        }
+
+        /**
+         * @desc stop the animation
+         * @return {Void}
+         */
+        stop() {
+          this.anim.stop();
+        }
+
+        /**
+         * @desc pause the animation
+         * @return {Void}
+         */
+        pause() {
+          this.anim.pause();
+        }
+
+        /**
+         * @desc play the animation segments
+         * @return {Void}
+         */
+        playSegments() {
+          this.anim.playSegments(this.options.segments);
+        }
+        
+        /**
+         * @desc set the animation speed
+         * @return {Void}
+         */
+        setSpeed() {
+          this.anim.setSpeed(this.options.speed);
+        }
+        
+        /**
+         * @desc set the animation direction
+         * @return {Void}
+         */
+        setDirection() {
+          this.anim.setDirection(this.options.direction);
+        }
+      }
+    }
+
+  })();
+</script>

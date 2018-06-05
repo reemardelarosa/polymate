@@ -1,0 +1,59 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="./polymate-behavior.html">
+
+<dom-module id="polymate-view">
+  <template>
+    <style>
+      :host {
+        display: inline-block;
+        overflow: hidden;
+        margin: 0 auto;
+        width: var(--polymate-view-width, 100%);
+        height: var(--polymate-view-height, 100%);
+      }
+    </style>
+    <div id="polymate"></div>
+  </template>
+
+  <script>
+    /**
+     * `polymate-view`
+     * lottie view component for polymer
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PolymateView extends PolymateBehavior(Polymer.Element) {
+      static get is() { return 'polymate-view'; }
+      static get properties() {
+        return {
+          /**
+           * @desc `analyticsId` from the consumer
+           * @type {Object}
+           */
+          options: {
+            type: Object,
+            value: {}
+          },
+          /**
+           * @desc animation view width
+           * @type {String}
+           */
+          width: {
+            type: String
+          },
+          /**
+           * @desc animation view height
+           * @type {String}
+           */
+          height: {
+            type: String
+          }
+        };
+      }
+    }
+
+    window.customElements.define(PolymateView.is, PolymateView);
+  </script>
+</dom-module>
