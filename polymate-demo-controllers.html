@@ -1,4 +1,5 @@
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="./polymate-behavior.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
 
 <dom-module id="polymate-demo-controllers">
@@ -12,8 +13,8 @@
       }
     </style>
     <div id="controllers">
-        <paper-icon-button icon="play-arrow" on-click="anim.play"></paper-icon-button>
-        <paper-icon-button icon="star"  on-click="anim.stop"></paper-icon-button>
+        <paper-icon-button icon="play-arrow" on-click="[[pause]]"></paper-icon-button>
+        <button on-click="[[pause(anim)]]">Pause</button>
     </div>
   </template>
 
@@ -27,14 +28,20 @@
      * @polymer
      * @demo demo/index.html
      */
-    class PolymerDemoControllers extends Polymer.Element {
+    class PolymerDemoControllers extends PolymateBehavior(Polymer.Element) {
       static get is() { return 'polymate-demo-controllers'; }
       static get properties() {
         return {
           anim: {
-            type: Object
+            type: Object,
+            value: {}
           }
         };
+      }
+
+      ready() {
+        super.ready();
+        console.dir(this.pause);
       }
     }
 
