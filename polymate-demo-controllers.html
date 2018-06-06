@@ -1,0 +1,43 @@
+<link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
+
+<dom-module id="polymate-demo-controllers">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+      #controllers {
+        display: flex;
+      }
+    </style>
+    <div id="controllers">
+        <paper-icon-button icon="play-arrow" on-click="anim.play"></paper-icon-button>
+        <paper-icon-button icon="star"  on-click="anim.stop"></paper-icon-button>
+    </div>
+  </template>
+
+  <script>
+    /**
+     * `polymate-demo`
+     *  
+     * demo helper for polymate-view
+     *
+     * @customElement
+     * @polymer
+     * @demo demo/index.html
+     */
+    class PolymerDemoControllers extends Polymer.Element {
+      static get is() { return 'polymate-demo-controllers'; }
+      static get properties() {
+        return {
+          anim: {
+            type: Object
+          }
+        };
+      }
+    }
+
+    window.customElements.define(PolymerDemoControllers.is, PolymerDemoControllers);
+  </script>
+</dom-module>

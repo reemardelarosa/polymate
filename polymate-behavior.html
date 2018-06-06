@@ -7,11 +7,6 @@
 
     PolymateBehavior = function(superClass) {
       return class extends PolymateUtils(superClass) {
-        ready() {
-          super.ready();
-          this.initializeLottie();
-        }
-        
         /**
          * @desc load the lottie animation using bodymovin player
          * @return {Void}

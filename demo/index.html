@@ -14,6 +14,9 @@
 
     <custom-style>
       <style is="custom-style" include="demo-pages-shared-styles">
+        .centered {
+          max-width: 100%;
+        }
       </style>
     </custom-style>
   </head>
@@ -22,7 +25,21 @@
       <h3>Basic Loader</h3>
       <demo-snippet>
         <template>
-          <polymate-view id="basicLoader" class="small"></polymate-view>
+          <polymate-view id="basicLoader" class="small" show-controllers></polymate-view>
+          <custom-style>
+              <style>
+                .small {
+                  font-size: 100px;
+                }
+              </style>
+            </custom-style>
+        </template>
+      </demo-snippet>
+
+      <h3>Basic Loader without controllers</h3>
+      <demo-snippet>
+        <template>
+          <polymate-view id="basicLoaderX" class="small"></polymate-view>
           <custom-style>
               <style>
                 .small {
@@ -33,11 +50,17 @@
         </template>
       </demo-snippet>
     </div>
+    </div>
     <script>
       window.addEventListener('WebComponentsReady', function(e) {
         // Basic Loader
         let basicLoader = document.getElementById('basicLoader');
         basicLoader.options = {
+          path: 'basicLoader.json'
+        };
+        // Basic Loader without controllers
+        let basicLoaderX = document.getElementById('basicLoaderX');
+        basicLoaderX.options = {
           path: 'basicLoader.json'
         };
       });

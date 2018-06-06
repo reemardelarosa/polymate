@@ -4,7 +4,8 @@
   "main": "polymate-view.html",
   "dependencies": {
     "polymer": "Polymer/polymer#^2.0.0",
-    "bodymovin": "^5.1.15"
+    "bodymovin": "^5.1.15",
+    "paper-icon-button": "PolymerElements/paper-icon-button#^2.2.0"
   },
   "devDependencies": {
     "iron-demo-helpers": "PolymerElements/iron-demo-helpers#^2.0.0",

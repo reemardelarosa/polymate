@@ -1,18 +1,22 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="./polymate-behavior.html">
+<link rel="import" href="./polymate-demo-controllers.html">
 
 <dom-module id="polymate-view">
   <template>
     <style>
       :host {
         display: inline-block;
-        width: 1em;
-        height: 1em;
+        width: var(--polymate-view-width, 1em);
+        height: var(--polymate-view-height, 1em);
         min-height: auto;
         margin: 0 auto;
       }
     </style>
     <div id="polymate"></div>
+    <template is="dom-if" if="[[showControllers]]">
+      <polymate-demo-controllers id="demo-controllers" anim="[[anim]]"></polymate-demo-controllers>
+    </template>
   </template>
 
   <script>
@@ -49,6 +53,14 @@
            */
           height: {
             type: String
+          },
+          /**
+           * @desc enable demo controllers
+           * @type {Boolean}
+           */
+          showControllers: {
+            type: Boolean,
+            value: false
           }
         };
       }
