@@ -10,6 +10,7 @@
 
     <link rel="import" href="../../iron-demo-helpers/demo-pages-shared-styles.html">
     <link rel="import" href="../../iron-demo-helpers/demo-snippet.html">
+    <link rel="import" href="../../paper-tabs/paper-tabs.html">
     <link rel="import" href="../polymate-view.html">
 
     <custom-style>
@@ -22,6 +23,12 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
+      <paper-tabs selected="0" scrollable>
+          <paper-tab>Using options w/ controllers</paper-tab>
+          <paper-tab>Using path, autoplay, loop w/ controllers</paper-tab>
+          <paper-tab>Using options w/out controllers</paper-tab>
+          <paper-tab>Using path, autoplay, loop w/out controllers</paper-tab>
+        </paper-tabs>
       <h3>Animation with controllers</h3>
       <demo-snippet>
         <template>

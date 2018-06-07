@@ -35,6 +35,14 @@
       static get properties() {
         return {
           /**
+           * @desc animation object
+           * @type {Object}
+           */
+          anim: {
+            type: Object,
+            notify: true
+          },
+          /**
            * @desc animation's options
            * @type {Object}
            */
@@ -43,40 +51,50 @@
             value: {}
           },
           /**
+           * @desc path
+           * @type {String}
+           */
+          path: String,
+          /**
+           * @desc autoplay
+           * @type {Boolean}
+           */
+          autoplay: Boolean,
+          /**
+           * @desc loop
+           * @type {Boolean}
+           */
+          loop: Boolean,
+          /**
            * @desc enable demo controllers
            * @type {Boolean}
            */
           showControllers: {
             type: Boolean,
             value: false
-          },
-          /**
-           * @desc animation object
-           * @type {Object}
-           */
-          anim: {
-            type: Object,
-            notify: true
           }
         };
       }
 
       static get observers() {
         return [
-          '_reloadAnimation(options.*)'
+          '_reloadAnimation(options.*, path, autoplay, loop)'
         ]
       }
 
       /**
        * @desc reinitialize if options are updated
-       * @param {Object} object
+       * @param {Object} options
+       * @param {String} path
+       * @param {Boolean} autoplay
+       * @param {Boolean} loop
        * @return {Void}
        */
-      _reloadAnimation(options) {
-        console.log(options);
-        if (this.anim) {
-          this.anim.destroy();
-        }
+      _reloadAnimation(options, path, autoplay, loop) {
+        if (this.anim) this.anim.destroy();
+        if (path) this.options.path = path;
+        if (autoplay) this.options.autoplay = autoplay;
+        if (loop) this.options.loop = loop;
         this.anim = this.initializeLottie();
       }
     }

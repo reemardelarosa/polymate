@@ -34,6 +34,7 @@
         <paper-slider id="speed" value="1" pin max="7" snaps step=".001"></paper-slider>
       </div>
       <div class="basic">
+        <paper-icon-button icon="av:play"></paper-icon-button>
         <paper-button raised on-click="stop">Stop</paper-button>
         <paper-button raised on-click="_togglePlayPause"><span id="playPause">[[_playPause]]</span></paper-button>
         <paper-button raised on-click="_reverseDirection">Reverse Direction</paper-button>
@@ -63,13 +64,10 @@
            */
           anim: Object,
           /**
-           * @desc animation options
+           * @desc animation options from polymate view
            * @type {Object}
            */
-          options: {
-            type: Object,
-            notify: true
-          },
+          options: Object,
           /**
            * @desc play or pause
            * @type {String}
@@ -81,7 +79,6 @@
       ready() {
         super.ready();
         let controller = this;
-
 
         window.addEventListener('WebComponentsReady', function() {
           controller._playPause = controller.anim.autoplay ? 'Pause' : 'Play';
@@ -101,11 +98,11 @@
       }
 
       /**
-        * @desc update animation data
+        * @desc update options path
         * @return {Void}
         */
       _changeAnimation() {
-        this.options.path = 'cycleAnimation.json';
+        this.options.path  = this.options.path === 'motorcycle.json' ? 'cycleAnimation.json' : 'motorcycle.json';
         this.notifyPath('options.path');
       }
 
