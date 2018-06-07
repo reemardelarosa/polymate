@@ -1,6 +1,10 @@
 <link rel="import" href="../polymer/polymer-element.html">
 <link rel="import" href="./polymate-behavior.html">
 <link rel="import" href="../paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../paper-button/paper-button.html">
+<link rel="import" href="../paper-slider/paper-slider.html">
+<link rel="import" href="../iron-icons/av-icons.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button-light.html">
 
 <dom-module id="polymate-demo-controllers">
   <template>
@@ -8,14 +12,35 @@
       :host {
         display: block;
       }
+
+      .basic,
       #controllers {
         display: flex;
       }
+
+      .caption {
+        padding-left: 5px;
+        color: #a0a0a0;
+      }
+
+      .speed-container {
+        text-align: left;
+        padding-left: 10px;
+      }
     </style>
+    <hr>
     <div id="controllers">
-        <paper-icon-button icon="play-arrow" on-click="[[pause]]"></paper-icon-button>
-        <button on-click="[[pause(anim)]]">Pause</button>
+      <div class="speed-container">Speed: <span id="speedValue" class="caption"></span>
+        <paper-slider id="speed" value="1" pin max="7" snaps step=".001"></paper-slider>
+      </div>
+      <div class="basic">
+        <paper-button raised on-click="stop">Stop</paper-button>
+        <paper-button raised on-click="_togglePlayPause"><span id="playPause">[[_playPause]]</span></paper-button>
+        <paper-button raised on-click="_reverseDirection">Reverse Direction</paper-button>
+        <paper-button raised on-click="_changeAnimation">Change Animation</paper-button>
+      </div>
     </div>
+    <hr>
   </template>
 
   <script>
@@ -32,16 +57,70 @@
       static get is() { return 'polymate-demo-controllers'; }
       static get properties() {
         return {
-          anim: {
+          /**
+           * @desc animation object from polymate view
+           * @type {Object}
+           */
+          anim: Object,
+          /**
+           * @desc animation options
+           * @type {Object}
+           */
+          options: {
             type: Object,
-            value: {}
-          }
+            notify: true
+          },
+          /**
+           * @desc play or pause
+           * @type {String}
+           */
+          _playPause: String
         };
       }
 
       ready() {
         super.ready();
-        console.dir(this.pause);
+        let controller = this;
+
+
+        window.addEventListener('WebComponentsReady', function() {
+          controller._playPause = controller.anim.autoplay ? 'Pause' : 'Play';
+          controller.$.speed.addEventListener('value-change', function() {
+            controller.$.speedValue.textContent = controller.$.speed.value + 'x';
+            controller.anim.setSpeed(controller.$.speed.value);
+          });
+        });
+      }
+
+      /**
+        * @desc reverse animation frame rendering
+        * @return {Void}
+        */
+      _reverseDirection() {
+        this.anim.setDirection(this.anim.playDirection * -1);
+      }
+
+      /**
+        * @desc update animation data
+        * @return {Void}
+        */
+      _changeAnimation() {
+        this.options.path = 'cycleAnimation.json';
+        this.notifyPath('options.path');
+      }
+
+      /**
+        * @desc toggle play/pause animation
+        * @return {Void}
+        */
+      _togglePlayPause() {
+        if (this.anim.isPaused) {
+          this.play();
+          this._playPause = 'Pause';
+        } else {
+          this.pause();
+          this._playPause = 'Play';
+        }
       }
     }
 

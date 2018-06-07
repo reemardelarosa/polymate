@@ -1,4 +1,6 @@
+
 <link rel="import" href="../polymer/polymer-element.html">
+<link rel="import" href="../paper-icon-button/paper-icon-button.html">
 <link rel="import" href="./polymate-behavior.html">
 <link rel="import" href="./polymate-demo-controllers.html">
 
@@ -13,10 +15,10 @@
         margin: 0 auto;
       }
     </style>
-    <div id="polymate"></div>
     <template is="dom-if" if="[[showControllers]]">
-      <polymate-demo-controllers id="demo-controllers" anim="{{anim}}"></polymate-demo-controllers>
+      <polymate-demo-controllers id="demo-controllers" anim="[[anim]]" options="{{options}}"></polymate-demo-controllers>
     </template>
+    <div id="polymate"></div>
   </template>
 
   <script>
@@ -41,20 +43,6 @@
             value: {}
           },
           /**
-           * @desc animation view width
-           * @type {String}
-           */
-          width: {
-            type: String
-          },
-          /**
-           * @desc animation view height
-           * @type {String}
-           */
-          height: {
-            type: String
-          },
-          /**
            * @desc enable demo controllers
            * @type {Boolean}
            */
@@ -63,20 +51,21 @@
             value: false
           },
           /**
-           * @desc animation object controller
+           * @desc animation object
            * @type {Object}
            */
           anim: {
-            type: Object
+            type: Object,
+            notify: true
           }
         };
       }
+
       static get observers() {
         return [
           '_reloadAnimation(options.*)'
         ]
       }
-
 
       /**
        * @desc reinitialize if options are updated
@@ -84,7 +73,11 @@
        * @return {Void}
        */
       _reloadAnimation(options) {
-        this.initializeLottie();
+        console.log(options);
+        if (this.anim) {
+          this.anim.destroy();
+        }
+        this.anim = this.initializeLottie();
       }
     }
 

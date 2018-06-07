@@ -22,48 +22,56 @@
   </head>
   <body>
     <div class="vertical-section-container centered">
-      <h3>Basic Loader</h3>
+      <h3>Animation with controllers</h3>
       <demo-snippet>
         <template>
           <polymate-view id="basicLoader" class="small" show-controllers></polymate-view>
           <custom-style>
-              <style>
-                .small {
-                  font-size: 100px;
-                }
-              </style>
-            </custom-style>
+            <style>
+              .small {
+                --polymate-view-width: 400px;
+                --polymate-view-height: 200px;
+              }
+            </style>
+            <script>
+              window.addEventListener('WebComponentsReady', function(e) {
+                let basicLoader = document.getElementById('basicLoader');
+                basicLoader.options = {
+                  path: 'motorcycle.json',
+                  autoplay: true,
+                  loop: true
+                };
+              });
+            </script>
+          </custom-style>
         </template>
       </demo-snippet>
 
       <h3>Basic Loader without controllers</h3>
       <demo-snippet>
         <template>
-          <polymate-view id="basicLoaderX" class="small"></polymate-view>
+          <polymate-view id="basicLoaderX" class="smallx"></polymate-view>
           <custom-style>
-              <style>
-                .small {
-                  font-size: 100px;
-                }
-              </style>
-            </custom-style>
+            <style>
+              .smallx {
+                --polymate-view-width: 100px;
+                --polymate-view-height: 75px;
+              }
+            </style>
+          </custom-style>
+          <script>
+            window.addEventListener('WebComponentsReady', function(e) {
+              let basicLoaderX = document.getElementById('basicLoaderX');
+              basicLoaderX.options = {
+                path: 'basicLoader.json',
+                autoplay: true,
+                loop: true
+              };
+            });
+        </script>
         </template>
       </demo-snippet>
     </div>
     </div>
-    <script>
-      window.addEventListener('WebComponentsReady', function(e) {
-        // Basic Loader
-        let basicLoader = document.getElementById('basicLoader');
-        basicLoader.options = {
-          path: 'basicLoader.json'
-        };
-        // Basic Loader without controllers
-        let basicLoaderX = document.getElementById('basicLoaderX');
-        basicLoaderX.options = {
-          path: 'basicLoader.json'
-        };
-      });
-    </script>
   </body>
 </html>

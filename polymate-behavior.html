@@ -17,16 +17,15 @@
           let _options = {
             container: this.$.polymate,
             renderer: this.options.renderer || 'svg',
-            loop: this.options.loop !== false,
-            autoplay: this.options.autoplay !== false,
-            autoloadSegments: this.options.autoloadSegments !== false,
+            loop: this.options.loop || false,
+            autoplay: this.options.autoplay || false,
+            autoloadSegments: this.options.autoloadSegments || false,
             animationData: this.options.animationData,
             path: this.options.path || '',
             rendererSettings: this.options.rendererSettings || {}
           };
 
-          this.anim = lottie.loadAnimation(_options);
-          // this.anim.addEventListener('complete', );
+          return lottie.loadAnimation(_options);
         }
 
         /**
@@ -51,30 +50,6 @@
          */
         pause() {
           this.anim.pause();
-        }
-
-        /**
-         * @desc play the animation segments
-         * @return {Void}
-         */
-        playSegments() {
-          this.anim.playSegments(this.options.segments);
-        }
-        
-        /**
-         * @desc set the animation speed
-         * @return {Void}
-         */
-        setSpeed() {
-          this.anim.setSpeed(this.options.speed);
-        }
-        
-        /**
-         * @desc set the animation direction
-         * @return {Void}
-         */
-        setDirection() {
-          this.anim.setDirection(this.options.direction);
         }
       }
     }
