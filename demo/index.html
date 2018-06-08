@@ -92,9 +92,9 @@
 
     <script>
       window.addEventListener('WebComponentsReady', function(e) {
-        let paperTabs = document.getElementById('paperTabs');
-        let ironPages = document.getElementById('ironPages');
-        console.log(paperTabs, ironPages);
+        let paperTabs = document.getElementById('paperTabs'),
+          ironPages = document.getElementById('ironPages');
+        paperTabs.addEventListener('selected-changed', (event) =>  ironPages.selected = event.detail.value);
       });
     </script>
     </div>
