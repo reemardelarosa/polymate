@@ -9,20 +9,21 @@
       return class extends PolymateUtils(superClass) {
         /**
          * @desc load the lottie animation using bodymovin player
+         * @param {Object} options
          * @return {Void}
          */
-        initializeLottie() {
-          if (this.isEmpty(this.options)) return;
+        initializeLottie(options) {
+          if (this.isEmpty(options)) return;
 
           let _options = {
             container: this.$.polymate,
-            renderer: this.options.renderer || 'svg',
-            loop: this.options.loop || false,
-            autoplay: this.options.autoplay || false,
-            autoloadSegments: this.options.autoloadSegments || false,
-            animationData: this.options.animationData,
-            path: this.options.path || '',
-            rendererSettings: this.options.rendererSettings || {}
+            renderer: options.renderer || 'svg',
+            loop: options.loop || false,
+            autoplay: options.autoplay || false,
+            autoloadSegments: options.autoloadSegments || false,
+            animationData: options.animationData,
+            path: options.path || '',
+            rendererSettings: options.rendererSettings || {}
           };
 
           return lottie.loadAnimation(_options);
@@ -50,6 +51,47 @@
          */
         pause() {
           this.anim.pause();
+        }
+
+        /**
+         * @desc set direction
+         * @param direction
+         * @return {Void}
+         */
+        setDirection(direction) {
+          this.anim.setDirection(direction);
+        }
+
+        /**
+         * @desc reverse direction
+         * @return {Void}
+         */
+        reverseDirection() {
+          this.setDirection(this.anim.playDirection * -1);
+        }
+
+        /**
+         * @desc is first frame
+         * @return {Boolean} isFirstFrame
+         */
+        isFirstFrame() {
+          return this.anim.currentFrame === 0;
+        }
+
+        /**
+         * @desc is last frame
+         * @return {Boolean} isLastFrame
+         */
+        isLastFrame() {
+          return this.anim.currentFrame === this.getLastFrame();
+        }
+
+        /**
+         * @desc get animation last frame
+         * @return {Number} lastFrame
+         */
+        getLastFrame() {
+          return this.anim.totalFrames ? this.anim.totalFrames - 1 : false;
         }
       }
     }

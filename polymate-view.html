@@ -78,24 +78,22 @@
 
       static get observers() {
         return [
-          '_reloadAnimation(options.*, path, autoplay, loop)'
+          '_reloadAnimation(options.*)'
         ]
       }
 
       /**
        * @desc reinitialize if options are updated
        * @param {Object} options
-       * @param {String} path
-       * @param {Boolean} autoplay
-       * @param {Boolean} loop
-       * @return {Void}
+       * @return {Object} anim
        */
-      _reloadAnimation(options, path, autoplay, loop) {
+      _reloadAnimation(options) {
         if (this.anim) this.anim.destroy();
-        if (path) this.options.path = path;
-        if (autoplay) this.options.autoplay = autoplay;
-        if (loop) this.options.loop = loop;
-        this.anim = this.initializeLottie();
+        let newOptions = options.value ? options.value : {};
+        if (this.path) newOptions.path = this.path;
+        if (this.autoplay) newOptions.autoplay = this.autoplay;
+        if (this.loop) newOptions.loop = this.loop;
+        this.anim = this.initializeLottie(newOptions);
       }
     }
 

@@ -37,8 +37,7 @@
         <paper-icon-button icon="av:play"></paper-icon-button>
         <paper-button raised on-click="stop">Stop</paper-button>
         <paper-button raised on-click="_togglePlayPause"><span id="playPause">[[_playPause]]</span></paper-button>
-        <paper-button raised on-click="_reverseDirection">Reverse Direction</paper-button>
-        <paper-button raised on-click="_changeAnimation">Change Animation</paper-button>
+        <paper-button raised id="reverseDirection">Reverse Direction</paper-button>
       </div>
     </div>
     <hr>
@@ -80,30 +79,20 @@
         super.ready();
         let controller = this;
 
+        this.$.reverseDirection.addEventListener('click', function() {
+          controller.reverseDirection();
+        })
+
         window.addEventListener('WebComponentsReady', function() {
-          controller._playPause = controller.anim.autoplay ? 'Pause' : 'Play';
+          if (!controller.anim) return;
+          if (controller.anim.autoplay) {
+            controller._playPause = controller.anim.autoplay ? 'Pause' : 'Play';
+          }
           controller.$.speed.addEventListener('value-change', function() {
             controller.$.speedValue.textContent = controller.$.speed.value + 'x';
             controller.anim.setSpeed(controller.$.speed.value);
           });
         });
-      }
-
-      /**
-        * @desc reverse animation frame rendering
-        * @return {Void}
-        */
-      _reverseDirection() {
-        this.anim.setDirection(this.anim.playDirection * -1);
-      }
-
-      /**
-        * @desc update options path
-        * @return {Void}
-        */
-      _changeAnimation() {
-        this.options.path  = this.options.path === 'motorcycle.json' ? 'cycleAnimation.json' : 'motorcycle.json';
-        this.notifyPath('options.path');
       }
 
       /**

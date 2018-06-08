@@ -26,12 +26,12 @@
     <div class="vertical-section-container centered">
       <paper-tabs id="paperTabs" selected="0" scrollable>
         <paper-tab>Using options w/ controllers</paper-tab>
-        <paper-tab>Using path, autoplay, loop w/ controllers</paper-tab>
+        <paper-tab>Check/Uncheck via click</paper-tab>
+        <paper-tab>Using path w/out controllers</paper-tab>
         <paper-tab>Using options w/out controllers</paper-tab>
-        <paper-tab>Using path, autoplay, loop w/out controllers</paper-tab>
       </paper-tabs>
-      <iron-pages id="ironPages" selected="[[pageName]]" attr-for-selected="page-name" fallback-selection="0">
-        <div page-name="0">
+      <iron-pages id="ironPages" selected="0">
+        <div>
           <demo-snippet>
             <template>
               <polymate-view id="basicLoader" class="small" show-controllers></polymate-view>
@@ -48,7 +48,7 @@
                     basicLoader.options = {
                       path: 'motorcycle.json',
                       autoplay: true,
-                      loop: true
+                      loop: false
                     };
                   });
                 </script>
@@ -56,36 +56,85 @@
             </template>
           </demo-snippet>
         </div>
-        <div page-name="1">
-          Using path, autoplay, loop w/ controllers
-        </div>
-        <div page-name="2">
+
+        <div>
           <demo-snippet>
             <template>
-              <polymate-view id="basicLoaderX" class="smallx"></polymate-view>
+              <h2 id="checkIt">Check it!</h2>
+              <polymate-view id="favourite" class="smallx" path="checked_done_.json"></polymate-view>
               <custom-style>
                 <style>
+                  #favourite {
+                    cursor: pointer;
+                  }
                   .smallx {
-                    --polymate-view-width: 100px;
-                    --polymate-view-height: 75px;
+                    --polymate-view-width: 300px;
+                    --polymate-view-height: 200px;
                   }
                 </style>
+                <script>
+                    window.addEventListener('WebComponentsReady', function(e) {
+                      let favourite = document.getElementById('favourite'),
+                        starIt = document.getElementById('checkIt');
+                      favourite.addEventListener('click', function(e) {
+                        favourite.anim.setSpeed(1);
+                        favourite.play();
+                        if (this.isFirstFrame())  {
+                          starIt.textContent = 'Uncheck It!'
+                          favourite.setDirection(1);
+                        };
+                        if (this.isLastFrame()) {
+                          starIt.textContent = 'Check It!'
+                          favourite.setDirection(-1);
+                        };
+                      });
+                    });
+                  </script>
               </custom-style>
-              <script>
-                window.addEventListener('WebComponentsReady', function(e) {
-                  let basicLoaderX = document.getElementById('basicLoaderX');
-                  basicLoaderX.options = {
-                    path: 'basicLoader.json',
-                    autoplay: true,
-                    loop: true
-                  };
-                });
-            </script>
             </template>
           </demo-snippet>
         </div>
-        <div page-name="3">
-          Using path, autoplay, loop w/out controllers
+
+
+        <div>
+          <demo-snippet>
+            <template>
+              <polymate-view class="servishero" path="servishero_loading.json" autoPlay="false" loop show-controllers></polymate-view>
+              <custom-style>
+                <style>
+                  .servishero {
+                    --polymate-view-width: 400px;
+                    --polymate-view-height: 200px;
+                  }
+                </style>
+              </custom-style>
+            </template>
+          </demo-snippet>
+        </div>
+  
+        <div>
+          <demo-snippet>
+              <template>
+                <polymate-view id="confetti" class="small"></polymate-view>
+                <custom-style>
+                  <style>
+                    .small {
+                      --polymate-view-width: 400px;
+                    }
+                  </style>
+                  <script>
+                    window.addEventListener('WebComponentsReady', function(e) {
+                      let confetti = document.getElementById('confetti');
+                      confetti.options = {
+                        path: 'confetti.json',
+                        autoplay: true,
+                        loop: true
+                      };
+                    });
+                  </script>
+                </custom-style>
+              </template>
+            </demo-snippet>
         </div>
       </iron-pages>
     </div>
@@ -94,7 +143,7 @@
       window.addEventListener('WebComponentsReady', function(e) {
         let paperTabs = document.getElementById('paperTabs'),
           ironPages = document.getElementById('ironPages');
-        paperTabs.addEventListener('selected-changed', (event) =>  ironPages.selected = event.detail.value);
+        paperTabs.addEventListener('selected-changed', event =>  ironPages.selected = event.detail.value);
       });
     </script>
     </div>
