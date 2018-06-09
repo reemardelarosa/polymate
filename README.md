@@ -18,10 +18,10 @@
 </p>
 
 <p align="center" class="rich-diff-level-zero">
-  <img src="/gifs/polymate-preview0.gif" alt="Example1">
   <img src="/gifs/polymate-preview2.gif" alt="Example2">
   <img src="/gifs/polymate-preview1.gif" alt="Example3">
-  <img src="/gifs/polymate-preview3.gif" alt="Example4">
+  <img src="/gifs/polymate-preview0.gif" alt="Example1">
+  <img src="/gifs/polymate-preview4.gif" alt="Example4">
 </p>
 
 ## Why Lottie?
