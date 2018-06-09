@@ -2,7 +2,7 @@
   Polymate - Lottie Animation View for Polymer 2
 </h1>
 <p align="center">
-  <a href="https://github.com/AfterWebX/polymate/issues"><img src="https://camo.githubusercontent.com/0ace69e0fdebdcfc2721242595e876ecb96de266/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6973737565732f4166746572576562582f706f6c796d6174652e737667" alt="GitHub issues" data-canonical-src="https://img.shields.io/github/issues/AfterWebX/polymate-view.svg" style="max-width:100%;"></a>
+  <a href="https://github.com/AfterWebX/polymate-view/issues"><img src="https://camo.githubusercontent.com/0ace69e0fdebdcfc2721242595e876ecb96de266/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6973737565732f4166746572576562582f706f6c796d6174652e737667" alt="GitHub issues" data-canonical-src="https://img.shields.io/github/issues/AfterWebX/polymate-view.svg" style="max-width:100%;"></a>
 <a href="https://github.com/AfterWebX/polymate-view/stargazers"><img src="https://camo.githubusercontent.com/072e91a4db3a6570604993401009b06a80f95c98/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f73746172732f4166746572576562582f706f6c796d6174652e737667" alt="GitHub stars" data-canonical-src="https://img.shields.io/github/stars/AfterWebX/polymate-view.svg" style="max-width:100%;"></a>
 <a href="https://raw.githubusercontent.com/AfterWebX/polymate-view/master/LICENSE" rel="nofollow"><img src="https://camo.githubusercontent.com/890acbdcb87868b382af9a4b1fac507b9659d9bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667" alt="GitHub license" data-canonical-src="https://img.shields.io/badge/license-MIT-blue.svg" style="max-width:100%;"></a>
 </p>
