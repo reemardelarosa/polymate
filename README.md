@@ -17,6 +17,12 @@
   For the first time, designers can create <b>and ship</b> beautiful animations without an engineer painstakingly recreating it by hand. They say a picture is worth 1,000 words so here are 13,000:
 </p>
 
+<p align="center" class="rich-diff-level-zero">
+  <img src="/gifs/polymate-preview0.gif" alt="Example1">
+  <img src="/gifs/polymate-preview1.gif" alt="Example2">
+  <img src="/gifs/polymate-preview2.gif" alt="Example3">
+</p>
+
 ## Why Lottie?
 
 
