@@ -55,11 +55,11 @@ Download lottie files › [lottiefiles.com](https://www.lottiefiles.com/)
 -->
 ```html
 <style> 
-  #demo {
+  #polymateElement {
      --polymate-view-width: 400px;
   }
 </style>
-<polymate-view id="demo" path="demo/motorcycle.json" autoplay loop show-controllers></polymate-view>
+<polymate-view id="polymateElement" path="demo/motorcycle.json" autoplay loop show-controllers></polymate-view>
 ```
 
 ## Installation
@@ -84,7 +84,7 @@ bower install --save polymate-view
 
 - Using path, autoplay and loop
 ```html
-<polymate-view id="loader" path="data.json" autoplay loop></polymate-view>
+<polymate-view id="polymateElement" path="data.json" autoplay loop></polymate-view>
 ```
 - Using options object
 ```html
@@ -108,7 +108,25 @@ bower install --save polymate-view
   window.customElements.define(PolymateElement.is, PolymateElement);
 </script>
 ```
+3. Style
+- custom vars
+```html
+<style> 
+  #polymateElement {
+     --polymate-view-width: 100px;
+     --polymate-view-height: 100px;
+  }
+</style>
+```
 
+- font-size
+```html
+<style>
+  #polymateElement {
+     font-size: 24px;
+  }
+</style>
+```
 ## Configuration
 
 You can pass a configuration object through `options` property:
@@ -118,11 +136,12 @@ You can pass a configuration object through `options` property:
 * autoplay: true / false it will start playing as soon as it is ready
 * renderer: 'svg' / 'canvas' / 'html' to set the renderer
 
-More information on [Bodymoving Documentation](https://github.com/bodymovin/bodymovin)
+More information on [lottie-web Documentation](https://github.com/bodymovin/bodymovin)
 
 ## Related Projects
 
 * [Bodymovin](https://github.com/bodymovin/bodymovin) ng-lottie is a wrapper of bodymovin
+* [Angular Lottie](https://github.com/chenqingspring/ng-lottie) angular implementation
 * [Ionic Lottie](https://github.com/yannbf/ionic-lottie) Thanks for @yannbf demonstrating ng-lottie on ionic3
 * [React Lottie](https://github.com/chenqingspring/react-lottie) react implementation
 * [Vue Lottie](https://github.com/chenqingspring/vue-lottie) vue implementation
