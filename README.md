@@ -77,7 +77,7 @@ bower install --save polymate-view
 ## Usage
 1. Import the polymate view component
 ```html
-<link rel="import" href="../polymate/polymate-view.html">
+<link rel="import" href="../polymate-view/polymate-view.html">
 ```
 2. Initialize <polymate-view>
 > Download animation json from [LottieFiles.com](https://www.lottiefiles.com/) or use some json from [demo](https://github.com/AfterWebX/polymate/tree/master/demo) folder
