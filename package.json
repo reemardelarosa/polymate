@@ -1,6 +1,6 @@
 {
   "name": "polymate-view",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "Lottie Implementation for Polymer 2",
   "main": "polymate-view.html",
   "directories": {
@@ -11,7 +11,9 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "polymer test"
+    "test": "polymer test",
+    "build": "polymer build",
+    "serve": "polymer serve"
   },
   "repository": {
     "type": "git",
