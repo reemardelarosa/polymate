@@ -1,13 +1,19 @@
-# Lottie View for Polymer
-[![GitHub issues](https://img.shields.io/github/issues/AfterWebX/polymate.svg)](https://github.com/AfterWebX/polymate/issues)
-[![GitHub stars](https://img.shields.io/github/stars/AfterWebX/polymate.svg)](https://github.com/AfterWebX/polymate/stargazers)
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://raw.githubusercontent.com/AfterWebX/polymate/master/LICENSE)
+<h1 align="center">
+  Polymate - Lottie Animation View for Polymer 2
+</h1>
+<p align="center">
+    <a href="https://github.com/AfterWebX/polymate/issues"><img src="https://camo.githubusercontent.com/0ace69e0fdebdcfc2721242595e876ecb96de266/68747470733a2f2f696d672e736869656c64732e696f2f6769746875622f6973737565732f4166746572576562582f706f6c796d6174652e737667" alt="GitHub issues" data-canonical-src="https://img.shields.io/github/issues/AfterWebX/polymate.svg"></a>
+</p>
 
 ## Wrapper of lottie-web
 
-[bodymovin](https://github.com/bodymovin/bodymovin) is [Adobe After Effects](http://www.adobe.com/products/aftereffects.html) plugin for exporting animations as JSON, also it provide bodymovin.js for vender them as svg/canvas/html.
+Lottie is a mobile library for Web,  and iOS that parses [Adobe After Effects](http://www.adobe.com/products/aftereffects.html) animations exported as json with [Bodymovin](https://github.com/airbnb/lottie-web) and renders them natively on mobile!
+
+For the first time, designers can create **and ship** beautiful animations without an engineer painstakingly recreating it by hand. They say a picture is worth 1,000 words so here are 13,000:
+
 
 ## Why Lottie?
+
 
 #### Flexible After Effects features
 We currently support solids, shape layers, masks, alpha mattes, trim paths, and dash patterns. And we’ll be adding new features on a regular basis.
@@ -18,9 +24,9 @@ You can go forward, backward, and most importantly you can program your animatio
 #### Small file sizes
 Bundle vector animations within your app without having to worry about multiple dimensions or large file sizes. Alternatively, you can decouple animation files from your app’s code entirely by loading them from a JSON API.
 
-[Learn more](http://airbnb.design/introducing-lottie/) › http://airbnb.design/lottie/
+Download lottie files › [lottiefiles.com](https://www.lottiefiles.com/)
 
-Looking for lottie files › https://www.lottiefiles.com/
+## View documentation, FAQ, help, examples, and more at [airbnb.io/lottie](http://airbnb.io/lottie/)
 
 ## Installation
 
@@ -35,7 +41,7 @@ bower install --save polymate
 ```
 
 ## Usage
-1. import the polymate view component
+1. Import the polymate view component
 ```html
 <link rel="import" href="../polymate/polymate-view.html">
 ```
