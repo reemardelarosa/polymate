@@ -8,7 +8,7 @@
 </p>
 
 <h2 align="center">
-  <a href="https://github.com/airbnb/lottie-web">lottie-web</a>
+  wrapper of <a href="https://github.com/airbnb/lottie-web">lottie-web</a>
 </h2>
 <p align="center">
   Lottie is a mobile library for Web,  and iOS that parses <a href="http://www.adobe.com/products/aftereffects.html">Adobe After Effects</a> animations exported as json with <a href="https://github.com/airbnb/lottie-web">Bodymovin</a> and renders them natively on mobile!
