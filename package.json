@@ -1,0 +1,33 @@
+{
+  "name": "polymate-view",
+  "version": "0.1.0",
+  "description": "Lottie Implementation for Polymer 2",
+  "main": "polymate-view.html",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "standard-version": "4.4.0"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "polymer test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/AfterWebX/polymate-view.git"
+  },
+  "keywords": [
+    "lottie",
+    "animation",
+    "polymer",
+    "after-effects",
+    "advanced"
+  ],
+  "author": "John Reemar Dela Rosa <jrddelarosa@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/AfterWebX/polymate-view/issues"
+  },
+  "homepage": "https://github.com/AfterWebX/polymate-view#readme"
+}

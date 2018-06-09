@@ -40,16 +40,37 @@ Download lottie files › [lottiefiles.com](https://www.lottiefiles.com/)
 
 ## View documentation, FAQ, help, examples, and more at [airbnb.io/lottie](http://airbnb.io/lottie/)
 
+## Demo
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="polymate-view.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
+```html
+<style> 
+  #demo {
+     --polymate-view-width: 400px;
+  }
+</style>
+<polymate-view id="demo" path="demo/motorcycle.json" autoplay loop></polymate-view>
+```
+
 ## Installation
 
 Install through npm:
 ```js
-npm install --save polymate
+npm install --save polymate-view
 ```
 
 Install through bower:
 ```js
-bower install --save polymate
+bower install --save polymate-view
 ```
 
 ## Usage
