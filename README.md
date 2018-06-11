@@ -66,12 +66,12 @@ Download lottie files › [lottiefiles.com](https://www.lottiefiles.com/)
 
 Install through npm:
 ```js
-npm install --save polymate-view
+npm install --save polymate
 ```
 
 Install through bower:
 ```js
-bower install --save polymate-view
+bower install --save polymate
 ```
 
 ## Usage
