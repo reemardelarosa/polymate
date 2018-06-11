@@ -40,7 +40,7 @@ Download lottie files › [lottiefiles.com](https://www.lottiefiles.com/)
 
 ## View documentation, FAQ, help, examples, and more at [airbnb.io/lottie](http://airbnb.io/lottie/)
 
-## [Demo](https://www.webcomponents.org/element/AfterWebX/polymate-view?bower)
+## [Demo](https://www.webcomponents.org/element/reemardelarosa/polymate#user-content-demo)
 <!--
 ```
 <custom-element-demo>
