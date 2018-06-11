@@ -1,7 +1,7 @@
 {
-  "name": "polymate-view",
+  "name": "polymate",
   "version": "0.1.5",
-  "description": "Lottie Implementation for Polymer 2",
+  "description": "Lottie Animation View for Polymer 2",
   "main": "polymate-view.html",
   "directories": {
     "test": "test"
