@@ -1,0 +1,155 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, minimum-scale=1, initial-scale=1, user-scalable=yes">
+
+    <title>polymate test</title>
+
+    <script src="../../webcomponentsjs/webcomponents-loader.js"></script>
+    <script src="../../web-component-tester/browser.js"></script>
+
+    <link rel="import" href="../polymate-view.html">
+    <link rel="import" href="../polymate-demo-controllers.html">
+  </head>
+  <body>
+
+    <test-fixture id="path">
+      <template>
+        <polymate-view path="basicLoader.json"></polymate-view>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="options">
+      <template>
+        <polymate-view></polymate-view>
+      </template>
+    </test-fixture>
+
+    <test-fixture id="controllers">
+        <template>
+          <polymate-view path="basicLoader.json" show-controllers></polymate-view>
+        </template>
+      </test-fixture>
+
+    <script>
+      let element;
+      suite('polymate-view', () => {
+        suite('1. Using path', done => {
+          setup(done => {
+            flush(() => {
+              element = fixture('path');
+              done();
+            });
+          });
+
+          test('Component should have basic properties', () => {
+            assert.equal(element.options.path, 'basicLoader.json', 'Path should be basicLoader.json');
+            assert.isFalse(element.anim.autoplay, 'Component should not autoplay');
+            assert.isFalse(element.anim.loop, 'Component should not loop');
+            shouldHaveBasicProperties(element)
+          });
+
+
+          test('Component should play', () => shouldPlay(element));
+          test('Component should play and pause', () => shouldPlayAndPause(element));
+          test('Component should play and stop', () => shouldPlayAndStop(element));
+          test('Component should set newdirection', () => shouldSetNewDirection(element));
+          test('Component should reverse direction', () => shouldReverseDirection(element));
+        });
+      
+        suite('2. Using options', () => {
+          setup(() => {
+            element = fixture('options');
+            element.options = {
+              path: 'confetti.json',
+              autoplay: true,
+              loop: true
+            };
+          });
+
+          test('Component should have basic properties', () => {
+            assert.equal(element.options.path, 'confetti.json', 'Path should be confetti.json');
+            assert.isTrue(element.anim.autoplay, 'Component should autoplay');
+            assert.isTrue(element.anim.loop, 'Component should loop');
+            shouldHaveBasicProperties(element)
+          });
+
+          test('Component should play', () => shouldPlay(element));
+          test('Component should play and pause', () => shouldPlayAndPause(element));
+          test('Component should play and stop', () => shouldPlayAndStop(element));
+          test('Component should set newdirection', () => shouldSetNewDirection(element));
+          test('Component should reverse direction', () => shouldReverseDirection(element));
+        });
+        
+        suite('3. Using controllers', () => {
+          setup(() => {
+            element = fixture('controllers');
+          });
+
+          test('Controllers should display', () => {
+            console.log(element.$);
+          });
+        });
+        suite('3. A11Y', () => {
+            a11ySuite('path');
+        });
+
+        suite('4. A11Y', () => {
+            a11ySuite('options');
+        });
+      });
+
+      function shouldHaveBasicFunctionality(test, element) {
+        test('Component should play', () => shouldPlay(element));
+        test('Component should play and pause', () => shouldPlayAndPause(element));
+        test('Component should play and stop', () => shouldPlayAndStop(element));
+        test('Component should set newdirection', () => shouldSetNewDirection(element));
+        test('Component should reverse direction', () => shouldReverseDirection(element));
+      }
+
+      function shouldHaveBasicProperties(element) {
+        assert.equal(element.anim.animType, 'svg', 'Animation type should be svg');
+        assert.equal(element.anim.playDirection, 1, 'Play Direction should be 1');
+        assert.equal(element.anim.playSpeed, 1, 'Play Speed should be 1');
+      }
+
+      function shouldPlay(element) {
+        assert.isTrue(element.isFirstFrame(), 'Component should be in first frame');
+        assert.isTrue(element.anim.isPaused, 'Component should be paused');
+
+        element.play();
+        assert.isFalse(element.anim.isPaused, 'Component should not be paused');
+      }
+
+      function shouldPlayAndPause(element) {
+        assert.isTrue(element.isFirstFrame(), 'Component should be in first frame');
+        assert.isTrue(element.anim.isPaused, 'Component should be paused');
+
+        element.play();
+        assert.isFalse(element.anim.isPaused, 'Component should not be paused');
+      }
+
+      function shouldPlayAndStop(element) {
+        element.play();
+        assert.isFalse(element.anim.isPaused, 'Component should not be paused');
+
+        element.stop();
+        assert.isTrue(element.isFirstFrame(), 'Component should be in first frame');
+      }
+
+      function shouldSetNewDirection(element) {
+        let newDirection = -1;
+        element.setDirection(-1);
+        assert.equal(element.anim.playDirection, newDirection, 'Direction should be updated');
+      }
+
+      function shouldReverseDirection(element) {
+        assert.equal(element.anim.playDirection, 1, 'Play Direction should be 1');
+        element.reverseDirection();
+        assert.equal(element.anim.playDirection, -1, 'Direction should be reversed');
+      }
+    </script>
+
+  </body>
+</html>

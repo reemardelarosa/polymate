@@ -38,10 +38,9 @@
         <paper-slider id="speed" value="1" pin max="7" snaps step=".001"></paper-slider>
       </div>
       <div class="basic">
-        <paper-icon-button icon="av:play"></paper-icon-button>
-        <paper-button raised on-click="stop">Stop</paper-button>
-        <paper-button raised on-click="_togglePlayPause"><span id="playPause">[[_playPause]]</span></paper-button>
-        <paper-button raised id="reverseDirection">Reverse Direction</paper-button>
+        <paper-button raised id="stop" on-click="_stop">Stop</paper-button>
+        <paper-button raised id="playPause" on-click="_togglePlayPause"><span>[[_playPause]]</span></paper-button>
+        <paper-button raised id="reverseDirection" on-click="reverseDirection">Reverse Direction</paper-button>
       </div>
     </div>
     <hr>
@@ -67,11 +66,6 @@
            */
           anim: Object,
           /**
-           * @desc animation options from polymate view
-           * @type {Object}
-           */
-          options: Object,
-          /**
            * @desc play or pause
            * @type {String}
            */
@@ -83,15 +77,10 @@
         super.ready();
         let controller = this;
 
-        this.$.reverseDirection.addEventListener('click', function() {
-          controller.reverseDirection();
-        })
-
         window.addEventListener('WebComponentsReady', function() {
           if (!controller.anim) return;
-          if (controller.anim.autoplay) {
-            controller._playPause = controller.anim.autoplay ? 'Pause' : 'Play';
-          }
+          if (controller.anim.isPaused) controller._disableStopAndReverse(controller);
+          controller._playPause = controller.anim.autoplay ? 'Pause' : 'Play';
           controller.$.speed.addEventListener('value-change', function() {
             controller.$.speedValue.textContent = controller.$.speed.value + 'x';
             controller.anim.setSpeed(controller.$.speed.value);
@@ -100,10 +89,32 @@
       }
 
       /**
-        * @desc toggle play/pause animation
-        * @return {Void}
-        */
+       * @desc stop animation
+       * @return {Void}
+       */
+       _stop() {
+        this.stop();
+        this._playPause = 'Play';
+        this._disableStopAndReverse(this);
+      }
+
+      /**
+       * @desc disable stop and reverse
+       * @param {Object} element
+       * @param {Boolean} enable
+       * @return {Void}
+       */
+      _disableStopAndReverse(element, enable) {
+        element.$.stop.disabled = enable ? false : true;
+        element.$.reverseDirection.disabled = enable ? false : true;
+      }
+
+      /**
+       * @desc toggle play/pause animation
+       * @return {Void}
+       */
       _togglePlayPause() {
+        this._disableStopAndReverse(this, true);
         if (this.anim.isPaused) {
           this.play();
           this._playPause = 'Pause';
